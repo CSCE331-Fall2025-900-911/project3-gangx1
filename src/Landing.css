@@ -1,0 +1,21 @@
+.landing-root{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff7e6,#fff3e0);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1b1b1b;padding:20px
+}
+.landing-card{max-width:720px;width:100%;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.08);padding:32px;text-align:center}
+.landing-logo{width:72px;height:72px;border-radius:50%;background:#1a73e8;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.6rem;margin-bottom:12px}
+h1{font-size:2rem;margin:6px 0}
+.landing-sub{color:#666;margin-bottom:20px}
+.landing-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.landing-btn{padding:18px 28px;border-radius:12px;border:none;font-size:1.1rem;font-weight:800;cursor:pointer;min-width:220px}
+.landing-btn.primary{background:#0f6d3f;color:white}
+.landing-btn.secondary{background:white;border:2px solid #ffd27a}
+.landing-help{color:#6b6b6b;font-weight:700;margin-top:8px}
+
+/* Make large touch targets for accessibility */
+.landing-btn{min-height:64px}
+button:focus{outline:4px solid #ffb74d}
+
+@media (max-width:480px){
+  .landing-card{padding:20px}
+  .landing-btn{min-width:unset;width:100%}
+}
