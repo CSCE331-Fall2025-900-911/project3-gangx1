@@ -24,13 +24,22 @@ export default function Cashier() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.getMenu().then((data) => {
-      setMenu(data);
-      const cats = Array.from(new Set(data.map((item) => item.category)));
-      setCategories(cats);
-      setSelectedCategory(cats[0] || '');
-    });
-  }, []);
+    api.getMenu()
+      .then((data) => {
+        setMenu(data);
+        const cats = Array.from(new Set(data.map((item) => item.category)));
+        setCategories(cats);
+        setSelectedCategory(cats[0] || '');
+      })
+      .catch((error) => {
+        console.error('Failed to load menu:', error);
+        toast({
+          title: 'Failed to load menu',
+          description: error.message,
+          variant: 'destructive',
+        });
+      });
+  }, [toast]);
 
   const handleAddToCart = (item: MenuItem, quantity: number, options: CartItemOptions) => {
     addItem({

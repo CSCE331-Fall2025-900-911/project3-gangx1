@@ -23,8 +23,17 @@ export default function Manager() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.getMenu().then(setMenu);
-    api.getLowStock().then(setLowStock);
+    api.getMenu()
+      .then(setMenu)
+      .catch((error) => {
+        console.error('Failed to load menu:', error);
+      });
+    
+    api.getLowStock()
+      .then(setLowStock)
+      .catch((error) => {
+        console.error('Failed to load low stock items:', error);
+      });
   }, []);
 
   const handleLogout = () => {

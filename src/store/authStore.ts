@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 interface User {
   userId: string;
-  role: 'manager' | 'cashier';
+  role: 'manager' | 'cashier' | 'barista' | 'customer';
   email?: string;
 }
 

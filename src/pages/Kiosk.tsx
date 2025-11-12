@@ -50,12 +50,21 @@ export default function Kiosk() {
   const t = translations[language];
 
   useEffect(() => {
-    api.getMenu().then((data) => {
-      setMenu(data);
-      const cats = Array.from(new Set(data.map((item) => item.category)));
-      setCategories(cats);
-    });
-  }, []);
+    api.getMenu()
+      .then((data) => {
+        setMenu(data);
+        const cats = Array.from(new Set(data.map((item) => item.category)));
+        setCategories(cats);
+      })
+      .catch((error) => {
+        console.error('Failed to load menu:', error);
+        toast({
+          title: language === 'en' ? 'Failed to load menu' : 'Error al cargar el menú',
+          description: error.message,
+          variant: 'destructive',
+        });
+      });
+  }, [toast, language]);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
